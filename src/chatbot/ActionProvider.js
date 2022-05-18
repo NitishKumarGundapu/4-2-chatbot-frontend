@@ -160,37 +160,51 @@ class ActionProvider  {
     language_option_1 = () => {
       a.setLanguage(1);
       console.log(a.getLanguage())
-      const message = this.createChatBotMessage("Language changed to telugu")
-      this.addMessageToState(message)
+      this.get_translation("Language changed to telugu",a.getLanguage()).then((response) => {
+        const message = this.createChatBotMessage(response.data)
+        this.addMessageToState(message)
+        this.start_again()
+      })
     }
 
     language_option_2 = () => {
-      const message = this.createChatBotMessage("Language changed to hindi")
       a.setLanguage(2);
       console.log(a.getLanguage())
-      this.addMessageToState(message)
-      
+      this.get_translation("Language changed to hindi",a.getLanguage()).then((response) => {
+        const message = this.createChatBotMessage(response.data)
+        this.addMessageToState(message)
+        this.start_again()
+      })
     }
 
     language_option_3 = () => {
       a.setLanguage(3);
       console.log(a.getLanguage())
-      const message = this.createChatBotMessage("Language changed to english")
-      this.addMessageToState(message)
+      this.get_translation("Language changed to english",a.getLanguage()).then((response) => {
+        const message = this.createChatBotMessage(response.data)
+        this.addMessageToState(message)
+        this.start_again()
+      })
     }
 
     language_option_4 = () => {
       a.setLanguage(4);
       console.log(a.getLanguage())
-      const message = this.createChatBotMessage("Language changed to tamil")
-      this.addMessageToState(message)
+      this.get_translation("Language changed to tamil",a.getLanguage()).then((response) => {
+        const message = this.createChatBotMessage(response.data)
+        this.addMessageToState(message)
+        this.start_again()
+      })
     }
 
     language_option_5 = () => {
       a.setLanguage(5);
       console.log(a.getLanguage())
-      const message = this.createChatBotMessage("Language changed to kannada")
-      this.addMessageToState(message)
+      this.get_translation("Language changed to kannada",a.getLanguage()).then((response) => {
+        const message = this.createChatBotMessage(response.data)
+        this.addMessageToState(message)
+        this.start_again()
+      })
     }
 
     addMessageToState = (message) => {

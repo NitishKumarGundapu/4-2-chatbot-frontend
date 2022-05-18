@@ -12,7 +12,7 @@
   margin: 5px;
   border-radius: 25px;
   padding: 8px;
-  border-color: blue;
+  border-color: #2898ec;
   background: transparent;
   text-align: center;
 }
@@ -22,6 +22,6 @@
 }
 
 .option-button:hover {
-  background-color: #3d4e8d;
+  background-color: #2898ec;
   color: white;
 }

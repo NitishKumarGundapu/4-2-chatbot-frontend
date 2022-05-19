@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "8bbb1957abf1d1febb41",
+    "revision": "77db3b2b24fbf25c3e8d",
     "url": "/4-2-chatbot/static/css/main.4123e846.chunk.css"
   },
   {
-    "revision": "8bbb1957abf1d1febb41",
-    "url": "/4-2-chatbot/static/js/main.8bbb1957.chunk.js"
+    "revision": "77db3b2b24fbf25c3e8d",
+    "url": "/4-2-chatbot/static/js/main.77db3b2b.chunk.js"
   },
   {
     "revision": "2759a94f1ea5ae27979b",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/4-2-chatbot/static/js/runtime~main.070daad0.js"
   },
   {
-    "revision": "8e08825327d4e6b7cf98de65fc67df58",
+    "revision": "07acb615b2e58b02f0d9ec048bffc082",
     "url": "/4-2-chatbot/index.html"
   }
 ];

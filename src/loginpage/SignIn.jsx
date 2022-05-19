@@ -29,12 +29,16 @@ function SignIn() {
   // User Login info
   const database = [
     {
-      username: "user1",
+      username: "user1@lenskart.in",
       password: "pass1"
     },
     {
-      username: "user2",
+      username: "user2@lenskart.in",
       password: "pass2"
+    },
+    {
+      username: "user3@lenskart.in",
+      password: "pass3"
     }
   ];
 
@@ -74,11 +78,13 @@ function SignIn() {
           <input type="text" name="uname" required />
           {renderErrorMessage("uname")}
         </div>
+        <br></br>
         <div className="input-container">
           <label>Password </label>
           <input type="password" name="pass" required />
           {renderErrorMessage("pass")}
         </div>
+        <br></br>
         <div className="button-container">
           <input type="submit" />
         </div>
@@ -89,7 +95,7 @@ function SignIn() {
   return (
     <div className="app">
       <div className="login-form">
-        <div className="title">SignIn</div>
+        <div className="title">Login to Your Account</div><br></br>
         {isSubmitted ? navigate('chatbot') : renderForm}
       </div>
     </div>

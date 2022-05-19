@@ -1,12 +1,11 @@
 .app {
-    font-family: sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 20px;
     height: 100vh;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: Consolas;
     background-color: #282c34;
   }
   
@@ -14,6 +13,7 @@
   input[type="password"] {
     height: 25px;
     border: 1px solid rgba(0, 0, 0, 0.2);
+    font-family: Consolas;
   }
   
   input[type="submit"] {
@@ -24,6 +24,7 @@
     border: 1px solid #2898ec;
     color: #fff;
     padding: 10px 20px;
+    font-family: Consolas;
   }
   
   input[type="submit"]:hover {
@@ -51,7 +52,7 @@
   }
   
   .title {
-    font-size: 25px;
+    font-size: 22px;
     margin-bottom: 20px;
   }
   

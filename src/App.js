@@ -1,20 +1,23 @@
 import React from "react";
-import Chatbot from "react-chatbot-kit";
-import 'react-chatbot-kit/build/main.css';
-import config from "./chatbot/config";
-import ActionProvider from "./chatbot/ActionProvider";
-import MessageParser from "./chatbot/MessageParser";
-
 import "./App.css";
+import SignIn  from './loginpage/SignIn'
+//import SignOut  from './loginpage/SignOut'
+import ChatBot from './chatbot/ChatBot'
+
+
+import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <div style={{ maxWidth: "300px" }}>
-        <Chatbot config={config} actionProvider={ActionProvider} messageParser={MessageParser} />
-      </div>
+    <div className="wrapper">
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SignIn />} />
+        <Route path="/chatbot" element={<ChatBot />} />
+      </Routes>
+    </BrowserRouter>
     </div>
   );
-  }
+}
 
 export default App;

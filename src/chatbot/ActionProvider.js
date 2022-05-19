@@ -1,6 +1,7 @@
 
 import a from "../api/language"
 import api from "../api/retriver"
+import {useNavigate} from 'react-router-dom'
 
 const text1 = [
   "Steps to place an order online or offline stores",
@@ -8,15 +9,15 @@ const text1 = [
   "Cancellation of Ordered Items with order number",
   "Making an appointment for a home eye test and try-on",
   "Select different input and display language",
+  "Signout from your account"
 ]
-
-
 class ActionProvider  {
     constructor(createChatBotMessage, setStateFunc) {
       this.createChatBotMessage = createChatBotMessage;
       this.setState = setStateFunc;
       this.ids = ["100011","100012","100013","100014","100015"]
       this.order_id = ""
+      this.navigate = useNavigate()
     }
 
 
@@ -71,6 +72,14 @@ class ActionProvider  {
       this.get_translation(text1[4],a.getLanguage()).then((response) => {
         const message = this.createChatBotMessage(response.data, {widget: "options5",});
         this.addMessageToState(message)
+      })
+    };
+
+    starting_option_6 = () => {
+      this.get_translation(text1[5],a.getLanguage()).then((response) => {
+        const message = this.createChatBotMessage(response.data, {widget: "options5",});
+        this.addMessageToState(message)
+        this.navigate('/')
       })
     };
 

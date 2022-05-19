@@ -10,6 +10,7 @@ const text1 = [
   "Cancellation of Ordered Items with order number",
   "Making an appointment for a home eye test and try-on",
   "Select different input and display language",
+  "Logout from your lenskart account"
 ]
 
 const Options = (props) => {
@@ -30,6 +31,7 @@ const Options = (props) => {
   var text_2 = text[2]
   var text_3 = text[3]
   var text_4 = text[4]
+  var text_5 = text[5]
 
   const options = [
     {
@@ -56,6 +58,11 @@ const Options = (props) => {
       text: text_4, 
       handler: props.actionProvider.starting_option_5, 
       id: 5,
+    },
+    { 
+      text: text_5, 
+      handler: props.actionProvider.starting_option_6, 
+      id: 6,
     }
   ];
 

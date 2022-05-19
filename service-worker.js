@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/4-2-chatbot/precache-manifest.19b598a296b6d0f29610ddafdcc2909d.js"
+  "/4-2-chatbot/signin/precache-manifest.678c01f80d11bb42fc79873157f90509.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/4-2-chatbot/index.html", {
+workbox.routing.registerNavigationRoute("/4-2-chatbot/signin/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });

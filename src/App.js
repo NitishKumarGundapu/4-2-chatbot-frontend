@@ -12,7 +12,7 @@ function App() {
     <div className="wrapper">
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SignIn />} />
+        <Route path="" element={<SignIn />} />
         <Route path="/chatbot" element={<ChatBot />} />
       </Routes>
     </BrowserRouter>

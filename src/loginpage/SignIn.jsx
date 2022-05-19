@@ -19,7 +19,7 @@ import {useNavigate} from 'react-router-dom'
 
 import "./styles.css";
 
-function App() {
+function SignIn() {
 
   const navigate = useNavigate()
   // React States
@@ -98,4 +98,4 @@ function App() {
   );
 }
 
-export default App;
+export default SignIn;

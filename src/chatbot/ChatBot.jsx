@@ -9,7 +9,7 @@ import 'react-chatbot-kit/build/main.css';
 
 import './main.css'
 
-function App() {
+function ChatBot() {
     return (
       <div className="App">
         <div style={{ maxWidth: "300px" }}>
@@ -19,4 +19,4 @@ function App() {
     );
   }
 
-export default App
+export default ChatBot

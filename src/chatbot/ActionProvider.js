@@ -88,8 +88,9 @@ class ActionProvider  {
     };
 
     starting_option_2 = () => {
-      this.get_translation(text1[1]+";"+"Please enter your area pincode number",a.getLanguage()).then(async (response) => {
-        const msg = response.data.split(";")
+      var lang_str =  ''.concat([text1[1], "Please enter your area pincode number"])
+      this.get_translation(lang_str,a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(",")
         var message = this.createClientMessage(msg[0])
         this.addMessageToState(message);
         message = this.createChatBotMessage(msg[1]);
@@ -102,8 +103,9 @@ class ActionProvider  {
     };
 
     starting_option_3 = () => {
-      this.get_translation(text1[2]+" _ "+"Please enter the order-id for your order",a.getLanguage()).then(async (response) => {
-        const msg = response.data.split(" _ ")
+      var lang_str =  ''.concat([text1[2], "Please enter the order-id for your order"])
+      this.get_translation(lang_str,a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(",")
         var message = this.createClientMessage(msg[0]);
         this.addMessageToState(message);
         message = this.createChatBotMessage(msg[1]);
@@ -116,8 +118,9 @@ class ActionProvider  {
     };
 
     starting_option_4 = () => {
-      this.get_translation(text1[3]+" _ "+"Please select on of 2 options",a.getLanguage()).then(async (response) => {
-        const msg = response.data.split(" _ ")
+      var lang_str =  ''.concat([text1[3], "Please select on of 2 options"])
+      this.get_translation(lang_str,a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(",")
         var message = this.createClientMessage(msg[0]);
         this.addMessageToState(message);
         message = this.createChatBotMessage(msg[1], {widget: "options4",});
@@ -130,8 +133,9 @@ class ActionProvider  {
     };
 
     starting_option_5 = () => {
-      this.get_translation(text1[4]+" _ "+"Please Select any below Language",a.getLanguage()).then(async (response) => {
-        const msg = response.data.split(" _ ")
+      var lang_str =  ''.concat([text1[4], "Please Select any below Language"])
+      this.get_translation(lang_str,a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(",")
         var message = this.createClientMessage(msg[0]);
         this.addMessageToState(message);
         message = this.createChatBotMessage(msg[1], {widget: "options5",});
@@ -255,8 +259,9 @@ class ActionProvider  {
     /*------------------------------------------------Option 4-----------------------------------------------*/ 
 
     home_eye_test = () => {
-      this.get_translation("1. Home eye test"+" _ "+"Please contact our Customer service centre to get an appointment - contact 180-100-1111",a.getLanguage()).then(async (response) => {
-        const msg = response.data.split(" _ ")
+      var lang_str =  ''.concat(["1. Home eye test", "Please contact our Customer service centre to get an appointment - contact 180-100-1111"])
+      this.get_translation(lang_str,a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(",")
         var message = this.createClientMessage(msg[0])
         this.addMessageToState(message)
         message = this.createChatBotMessage(msg[1])
@@ -269,8 +274,9 @@ class ActionProvider  {
     }
 
     try_on = () => {
-      this.get_translation("2. Try on"+" _ "+"This feature is available in android or the ios app , please download the app to see the feature",a.getLanguage()).then(async (response) => {
-        const msg = response.data.split(" _ ")
+      var lang_str =  ''.concat(["2. Try on", "This feature is available in android or the ios app , please download the app to see the feature"])
+      this.get_translation(lang_str,a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(",")
         var message = this.createClientMessage(msg[0])
         this.addMessageToState(message)
         message = this.createChatBotMessage(msg[1])

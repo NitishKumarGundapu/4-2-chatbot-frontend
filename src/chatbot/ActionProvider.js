@@ -2,7 +2,6 @@
 import a from "../api/language"
 import api from "../api/retriver"
 import {useNavigate} from 'react-router-dom'
-
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
@@ -25,16 +24,17 @@ const messagesRef = firestore.collection('messages');
 
 
 const text1 = [
-  "Steps to place an order online or offline stores",
-  "Finding nearest Lenskart Store in your surroundings",
-  "Cancellation of Ordered Items with order number",
-  "Making an appointment for a home eye test and try-on",
-  "Select different input and display language",
-  "Signout from your account"
+  "1. Steps to place an order online or offline stores",
+  "2. Finding nearest Lenskart Store in your surroundings",
+  "3. Cancellation of Ordered Items with order number",
+  "4. Making an appointment for a home eye test and try-on",
+  "5. Select different input and display language",
+  "6. Logout from your lenskart account"
 ]
 class ActionProvider  {
-    constructor(createChatBotMessage, setStateFunc) {
+    constructor(createChatBotMessage, setStateFunc ,createClientMessage) {
       this.createChatBotMessage = createChatBotMessage;
+      this.createClientMessage = createClientMessage;
       this.setState = setStateFunc;
       this.ids = ["100011","100012","100013","100014","100015"]
       this.order_id = ""
@@ -54,9 +54,20 @@ class ActionProvider  {
     start_again = () => {
       this.get_translation("Hello, I'm Sara. How may I help you today ? Do you need help with: ",a.getLanguage()).then(async (response) => {
         const message = this.createChatBotMessage(response.data, {widget: "options",});
-        this.addMessageToState(message)
+        this.addMessageToState1(message)
         await messagesRef.add({
           text: "start again",
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
+      })
+    };
+
+    warning_1 = (lowercase) => {
+      this.get_translation("Please enter the correct text only when i asked ! dont enter anything unnecessary",a.getLanguage()).then(async (response) => {
+        const message = this.createChatBotMessage(response.data);
+        this.addMessageToState(message)
+        await messagesRef.add({
+          text: lowercase,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
       })
@@ -67,7 +78,7 @@ class ActionProvider  {
     
     starting_option_1 = () => {
       this.get_translation(text1[0],a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data, {widget: "options1",});
+        const message = this.createClientMessage(response.data, {widget: "options1",});
         this.addMessageToState(message);
         await messagesRef.add({
           text: response.data,
@@ -77,8 +88,11 @@ class ActionProvider  {
     };
 
     starting_option_2 = () => {
-      this.get_translation("Please enter your area pincode number",a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data);
+      this.get_translation(text1[1]+";"+"Please enter your area pincode number",a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(";")
+        var message = this.createClientMessage(msg[0])
+        this.addMessageToState(message);
+        message = this.createChatBotMessage(msg[1]);
         this.addMessageToState(message);
         await messagesRef.add({
           text: response.data,
@@ -88,8 +102,11 @@ class ActionProvider  {
     };
 
     starting_option_3 = () => {
-      this.get_translation("Please enter the order-id for your order",a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data);
+      this.get_translation(text1[2]+" _ "+"Please enter the order-id for your order",a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(" _ ")
+        var message = this.createClientMessage(msg[0]);
+        this.addMessageToState(message);
+        message = this.createChatBotMessage(msg[1]);
         this.addMessageToState(message);
         await messagesRef.add({
           text: response.data,
@@ -99,8 +116,11 @@ class ActionProvider  {
     };
 
     starting_option_4 = () => {
-      this.get_translation(text1[3],a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data, {widget: "options4",});
+      this.get_translation(text1[3]+" _ "+"Please select on of 2 options",a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(" _ ")
+        var message = this.createClientMessage(msg[0]);
+        this.addMessageToState(message);
+        message = this.createChatBotMessage(msg[1], {widget: "options4",});
         this.addMessageToState(message);
         await messagesRef.add({
           text: response.data,
@@ -110,8 +130,11 @@ class ActionProvider  {
     };
 
     starting_option_5 = () => {
-      this.get_translation(text1[4],a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data, {widget: "options5",});
+      this.get_translation(text1[4]+" _ "+"Please Select any below Language",a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(" _ ")
+        var message = this.createClientMessage(msg[0]);
+        this.addMessageToState(message);
+        message = this.createChatBotMessage(msg[1], {widget: "options5",});
         this.addMessageToState(message);
         await messagesRef.add({
           text: response.data,
@@ -122,7 +145,7 @@ class ActionProvider  {
 
     starting_option_6 = () => {
       this.get_translation(text1[5],a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data, {widget: "options5",});
+        const message = this.createChatBotMessage(response.data);
         this.addMessageToState(message)
         await messagesRef.add({
           text: response.data,
@@ -135,8 +158,12 @@ class ActionProvider  {
    /*------------------------------------------------Option 1-----------------------------------------------*/ 
 
     place_an_order_online = () => {
-      this.get_translation("Please visit the website lenskart.com for details",a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data);
+      let request_string = "1.Place an order online ; Please contact our nearby store and make an order or please contact to our customer care 2014587400 or visit store.lenskart.com for details "
+      this.get_translation(request_string,a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(";")
+        var message = this.createClientMessage(msg[0]);
+        this.addMessageToState(message)
+        message = this.createChatBotMessage(msg[1]);
         this.addMessageToState(message)
         await messagesRef.add({
           text: "Place an order online",
@@ -146,9 +173,12 @@ class ActionProvider  {
     };
 
     place_an_order_offline = () => {
-      this.get_translation('Please contact our nearby store and make an order or please contact to '+
-      'our customer care 2014587400 or visit store.lenskart.com for details.',a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data);
+      let request_string = "2.Place an order offline ; Please contact our nearby store and make an order or please contact to our customer care 2014587400 or visit store.lenskart.com for details "
+      this.get_translation(request_string,a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(";")
+        var message = this.createClientMessage(msg[0]);
+        this.addMessageToState(message)
+        message = this.createChatBotMessage(msg[1]);
         this.addMessageToState(message)
         await messagesRef.add({
           text: "Place an order offline",
@@ -160,6 +190,7 @@ class ActionProvider  {
      /*------------------------------------------------Option 2-----------------------------------------------*/ 
 
      locate_store = (lowercase) => {
+      //const lowercase = getPincode();
       const get_translation = async (message,language) => {
         const response = await api.get("/address",{
           params : {
@@ -224,8 +255,11 @@ class ActionProvider  {
     /*------------------------------------------------Option 4-----------------------------------------------*/ 
 
     home_eye_test = () => {
-      this.get_translation("Please contact our Customer service centre to get an appointment - contact 180-100-1111",a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data)
+      this.get_translation("1. Home eye test"+" _ "+"Please contact our Customer service centre to get an appointment - contact 180-100-1111",a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(" _ ")
+        var message = this.createClientMessage(msg[0])
+        this.addMessageToState(message)
+        message = this.createChatBotMessage(msg[1])
         this.addMessageToState(message)
         await messagesRef.add({
           text: "home eye test",
@@ -235,8 +269,11 @@ class ActionProvider  {
     }
 
     try_on = () => {
-      this.get_translation("This feature is available in android or the ios app , please download the app to see the feature",a.getLanguage()).then(async (response) => {
-        const message = this.createChatBotMessage(response.data)
+      this.get_translation("2. Try on"+" _ "+"This feature is available in android or the ios app , please download the app to see the feature",a.getLanguage()).then(async (response) => {
+        const msg = response.data.split(" _ ")
+        var message = this.createClientMessage(msg[0])
+        this.addMessageToState(message)
+        message = this.createChatBotMessage(msg[1])
         this.addMessageToState(message)
         await messagesRef.add({
           text: "try on",
@@ -321,6 +358,13 @@ class ActionProvider  {
       this.setState((prevState) => ({
         ...prevState,
         messages: [...prevState.messages, message],
+      }));
+    };
+
+    addMessageToState1 = (message) => {
+      this.setState((prevState) => ({
+        ...prevState,
+        messages: [message],
       }));
     };
   }

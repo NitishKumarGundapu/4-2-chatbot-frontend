@@ -5,11 +5,11 @@ import "./main.css";
 import {useState,useEffect} from "react";
 
 const text1 = [
-  "Telugu",
-  "Hindi",
-  "English",
-  "Tamil",
-  "kannada"
+  "1. Telugu",
+  "2. Hindi",
+  "3. English",
+  "4. Tamil",
+  "5. kannada"
 ]
 
 const Options5 = (props) => 

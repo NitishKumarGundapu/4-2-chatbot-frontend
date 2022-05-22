@@ -5,8 +5,8 @@ import a from "../api/language"
 import "./main.css";
 
 const text11 = [
-  "Place an order online",
-  "Place an order offline"
+  "1.Place an order online",
+  "2.Place an order offline"
 ]
 
 const Options1 = (props) => {

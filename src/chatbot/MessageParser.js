@@ -2,8 +2,28 @@ class MessageParser {
     constructor(actionProvider) {
       this.actionProvider = actionProvider;
     }
+
+    parse = (message) => {
+      //console.log(message);
+      const lowercase = message.toLowerCase();
+
+      if(lowercase.includes("start")){
+        this.actionProvider.start_again();
+      }
+
+      else if(lowercase.includes("5000")){
+        this.actionProvider.locate_store(lowercase);
+      }
+
+      else if(lowercase.includes("1000")){
+        this.actionProvider.cancel_order(lowercase);
+      }
+      else{
+        this.actionProvider.warning_1(lowercase);
+      }
+    }
   
-    parse(message) {
+    parser = (message) => {
       //console.log(message);
       const lowercase = message.toLowerCase();
 

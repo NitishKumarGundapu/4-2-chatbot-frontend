@@ -5,12 +5,12 @@ import a from "../api/language"
 import "./main.css";
 
 const text1 = [
-  "Steps to place an order online or offline stores",
-  "Finding nearest Lenskart Store in your surroundings",
-  "Cancellation of Ordered Items with order number",
-  "Making an appointment for a home eye test and try-on",
-  "Select different input and display language",
-  "Logout from your lenskart account"
+  "1. Steps to place an order online or offline stores",
+  "2. Finding nearest Lenskart Store in your surroundings",
+  "3. Cancellation of Ordered Items with order number",
+  "4. Making an appointment for a home eye test and try-on",
+  "5. Select different input and display language",
+  "6. Logout from your lenskart account"
 ]
 
 const Options = (props) => {

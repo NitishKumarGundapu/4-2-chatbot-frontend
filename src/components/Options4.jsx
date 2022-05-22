@@ -5,8 +5,8 @@ import "./main.css";
 import {useState,useEffect} from "react";
 
 const text1 = [
-  "Home Eye Test",
-  "Try On"
+  "1. Home Eye Test",
+  "2. Try On"
 ]
 
 const Options4 = (props) => 

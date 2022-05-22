@@ -5,8 +5,8 @@ import "./main.css";
 import {useState,useEffect} from "react";
 
 const text1 = [
-  "Yes",
-  "No"
+  "1. Yes",
+  "2. No"
 ]
 
 const Options3 = (props) => 

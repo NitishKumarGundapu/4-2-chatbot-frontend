@@ -1,6 +1,7 @@
 import React from "react";
 import { createChatBotMessage } from "react-chatbot-kit";
 
+import ChatHead from "./ChatHead"
 import Options from "../components/Options";
 import Options1 from "../components/Options1";
 import Options3 from "../components/Options3";
@@ -39,6 +40,11 @@ const config = {
       widgetFunc: (props) => <Options4 {...props} />
     }
   ],
+  customComponents: {
+     // Replaces the default header
+    header: () => <ChatHead />
+    // Replaces the default bot avatar
+  },
 };
 
 export default config;

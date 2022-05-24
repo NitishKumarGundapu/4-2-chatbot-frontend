@@ -151,6 +151,7 @@ class ActionProvider  {
       this.get_translation(text1[5],a.getLanguage()).then(async (response) => {
         const message = this.createChatBotMessage(response.data);
         this.addMessageToState(message)
+        a.setLanguage(3);
         await messagesRef.add({
           text: response.data,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -228,8 +229,10 @@ class ActionProvider  {
         })
       }
       else{
-        const message = this.createChatBotMessage("Please enter the correct order-id");
+        this.get_translation("Please enter the correct order-id ",a.getLanguage()).then(async (response) => {
+          const message = this.createChatBotMessage(response.data);
           this.addMessageToState(message);
+        })
       }
     }
     cancel_order_yes = () => {

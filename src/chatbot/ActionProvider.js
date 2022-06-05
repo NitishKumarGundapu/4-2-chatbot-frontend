@@ -48,7 +48,7 @@ class ActionProvider  {
           msg: message,
           lang: language
         }})
-        return response
+        return response;
       };
 
     start_again = () => {

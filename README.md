@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project is Available at [ChatBot App](https://nitishkumargundapu.github.io/4-2-chatbot/).
+This project is Available at [ChatBot App](https://lenskart-chatbot.netlify.app/).
 
 ## Available Scripts
 

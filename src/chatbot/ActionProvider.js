@@ -51,6 +51,15 @@ class ActionProvider  {
         return response
       };
 
+      get_response = async (message,language) => {
+        const response = await api.get("/get_response",{
+          params : {
+          msg: message,
+          lang: language
+        }})
+        return response
+      };
+
     start_again = () => {
       this.get_translation("Hello, I'm Sara. How may I help you today ? Do you need help with: ",a.getLanguage()).then(async (response) => {
         const message = this.createChatBotMessage(response.data, {widget: "options",});
@@ -63,7 +72,7 @@ class ActionProvider  {
     };
 
     warning_1 = (lowercase) => {
-      this.get_translation("Please enter the correct text only when i asked ! dont enter anything unnecessary",a.getLanguage()).then(async (response) => {
+      this.get_response(lowercase,a.getLanguage()).then(async (response) => {
         const message = this.createChatBotMessage(response.data);
         this.addMessageToState(message)
         await messagesRef.add({

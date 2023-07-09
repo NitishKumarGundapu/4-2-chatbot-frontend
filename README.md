@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project is Available at [ChatBot App](https://lenskart-chatbot.netlify.app/).
-
 ## Available Scripts
 
 In the project directory, you can run:
